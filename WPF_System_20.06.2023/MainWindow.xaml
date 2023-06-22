@@ -1,0 +1,72 @@
+﻿<Window x:Class="WPF_System_20._06._2023.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_System_20._06._2023"
+        mc:Ignorable="d"
+        Title="STEP IT | Task Manager" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Processes">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Search:" VerticalAlignment="Center"/>
+                        <TextBox x:Name="processSearchTextBox" Width="200" Margin="5"/>
+                        <Button Content="Search" Click="ProcessSearchButton_Click"/>
+                    </StackPanel>
+
+                    <ListView x:Name="processListView" Grid.Row="1" Margin="10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="100"/>
+                                <GridViewColumn Header="User" DisplayMemberBinding="{Binding User}" Width="200"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Details">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Search:" VerticalAlignment="Center"/>
+                        <TextBox x:Name="detailsSearchTextBox" Width="200" Margin="5"/>
+                        <Button Content="Search" Click="DetailsSearchButton_Click"/>
+                    </StackPanel>
+
+                    <ListView x:Name="detailsListView" Grid.Row="1" Margin="10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="100"/>
+                                <GridViewColumn Header="User" DisplayMemberBinding="{Binding User}" Width="200"/>
+                                <GridViewColumn Header="CPU Usage" DisplayMemberBinding="{Binding CpuUsage, StringFormat={}{0}%}" Width="100"/>
+                                <GridViewColumn Header="GPU Usage" DisplayMemberBinding="{Binding GpuUsage, StringFormat={}{0}%}" Width="100"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <Grid Margin="10" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBox x:Name="taskPathTextBox" Width="300" Margin="0 0 10 0" VerticalAlignment="Center"/>
+                <Button Content="Run Task" Click="RunTaskButton_Click" Width="100" Margin="0 0 10 0"/>
+                <Button Content="Kill Task" Click="KillTaskButton_Click" Width="100" Margin="0 0 10 0"/>
+                <Button Content="Blacklist" Click="BlacklistButton_Click" Width="100" Margin="0 0 5 0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
